@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header class="header-section">
+    <div class="header-overlay">
+        <video class="header-video" autoplay muted loop>
+            <source src="{% static 'videos/H.K.INFRA.mp4' %}" type="video/mp4">
+            <source src="{% static 'videos/H.K.INFRA.ogg' %}" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+        <div class="header-content">
+            <h1 class="title">Welcome to H.K. Infra</h1>
+            <p class="subtitle">Engineering Excellence Redefined</p>
+            <a href="#services" class="btn btn-primary">Explore Our Services</a>
+        </div>
+    </div>
+</header>
+
+{% include 'services.html' %}
+{% include 'achievements.html' %}
+{% include 'about.html' %}
+{% include 'contact.html' %}
+
+{% endblock %}
+
+<script>
+    async function fetchData() {
+        try {
+            let response = await fetch("http://your-php-backend.com/api/data.php");  // Replace with your PHP API URL
+            let data = await response.json();
+            console.log("Received Data:", data);  // Check if data is received
+            document.getElementById("api-data").innerText = JSON.stringify(data, null, 2);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+    fetchData();
+</script>
+
+<h2>PHP API Data:</h2>
+<pre id="api-data"></pre>
